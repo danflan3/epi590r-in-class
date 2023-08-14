@@ -1,3 +1,3 @@
 # EPI590R repo
 
-This repository belongs to Dan Flanagan
+This repository belongs to Dan Flanagan.
