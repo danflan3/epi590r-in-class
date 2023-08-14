@@ -96,3 +96,22 @@ tbl_int <- tbl_regression(
 tbl_merge(list(tbl_no_int, tbl_int),
 					tab_spanner = c("**Model 1**", "**Model 2**"))
 
+
+
+### IN CLASS EXERCISE ###
+
+## (3) Create a univariate regression table looking at the association between
+##			sex_cat as the x = variable and each of nsibs, sleep_wkdy, and sleep_wknd, and income.
+tbl_uvregression(
+	nlsy,
+	x = sex_cat,
+	include = c(nsibs, starts_with("sleep"), income),
+	method = lm)
+
+
+## (4) Fit a Poisson regression (family = poisson()) for the number of siblings,
+##			using 3 predictors of your choice. Create a nice table displaying your Poisson reg
+
+
+
+
