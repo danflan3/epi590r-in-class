@@ -31,6 +31,7 @@ count(nlsy_cc, eyesight_cat)
 if (!dir.exists(here::here("data", "clean"))) {
 	dir.create(here::here("data", "clean"))
 }
+##NOTE: Above code circumvents prior issue where "clean" folder did not exist in the file structure of the R project/Git repository
 
 # save the complete-case data
 write_rds(nlsy_cc, here::here("data", "clean", "nlsy-complete-cases.rds"))
