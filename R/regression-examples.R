@@ -113,5 +113,4 @@ tbl_uvregression(
 ##			using 3 predictors of your choice. Create a nice table displaying your Poisson reg
 
 
-
-
+blah blah blah
