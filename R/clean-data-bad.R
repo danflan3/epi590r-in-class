@@ -20,5 +20,5 @@ nlsy <- nlsy |>
 nlsy <- na.omit(nlsy)
 
 setwd("../clean/")
-##ISSUE 2: when saving, again setwd path -- specifically the "clean" folder -- does not exist on local machine
+##ISSUE 2: when saving, again setwd path -- specifically the "clean" folder -- was not created in repo forked/copied from github
 write_rds(nlsy, "nlsy-complete-cases.rds")
