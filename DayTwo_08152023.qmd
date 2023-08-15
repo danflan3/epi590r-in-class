@@ -57,8 +57,41 @@ Use the error: true option to render the document despite any errors in the code
 
 -   Cross-referencing Tables & Figures in document text.
 
--   Inline Stats -- create a list of stats that you know you will report in the manuscript, you can then write inline R code to reference these results. If data changes, any down stream changes in your results will automatically update. \[\*\*great way to make sure your text results always match table results!\] 
+-   Inline Stats -- create a list of stats that you know you will report in the manuscript, you can then write inline R code to reference these results. If data changes, any down stream changes in your results will automatically update. \[\*\*great way to make sure your text results always match table results!\]
 
-- **Can also do this using gtsummary!** Use inline_text() function to reference specific numbers in a table that was created with gtsummary by variable/column. inline_text() belongs to gtsummary, so cannot use to reference other objects in R (for example, a number stored in a list). Also, inline_text() function syntax is longer and can be harder to read when writing a manuscript. Recommend storing referenced stats in a chunk with include: false option before the text. 
+-   **Can also do this using gtsummary!** Use inline_text() function to reference specific numbers in a table that was created with gtsummary by variable/column. inline_text() belongs to gtsummary, so cannot use to reference other objects in R (for example, a number stored in a list). Also, inline_text() function syntax is longer and can be harder to read when writing a manuscript. Recommend storing referenced stats in a chunk with include: false option before the text.
+
+## Functions
+
+**If you find yourself copy/pasting something more than 3 times, then you should write a function to do repeat work.**
+
+**A key take away from R course -- if you have something that works, don't start from scratch! Start from what works!**
+
+Thought process for creating a function: - Always have an example -- with numbers -- to test your function. May be longer code that you are copy/pasting to accomplish the goal you want your function to accomplish - Define a new function blah \<- function() {} and copy paste your working code into the function. If you run the function without defining each component, you will get an error "unused argument". - Revise your function to define each component/parameter required in the code AND specify/name these components in function(...)
+
+To define default values for arguments, simply specify them when you list out the arguments in defining your function()
+
+## Targets
+
+[*Classic Approach:*]{.underline} Script-based workflow = running different components of analysis as separate R scripts 
+-		01-data.R
+-		02-model.R 
+-		03-plot.R
+
+Challenge with this classic approach is that if you change something in one script, then you have to remember to re-run any scripts that depend on it (and that requires keeping track of which files are inputs/outputs and where they are saved)
+
+Note: {targets} **requires** that you wrap each of your individual R scripts in functions that can be named/executed by targets for updating dependent steps. 
+
+There are lots of use cases for {targets} but they are more advanced and are best revisited when you have a project that is requiring lots of iterations of very similar code/model structures. **Recommend going through more detailed examples and referencing the targets user manual when you have a potential use case: https://books.ropensci.org/targets/**
+
+## Tips & Tricks
+Can utilize headings/outline feature in regular R script with at least 2 # signs - TITLE - followed by at least 4 dashes
+```{r}
+
+## Section Heading 1 ----
+
+### Sub-Section Heading ----
+
+```
 
 
