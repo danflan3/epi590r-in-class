@@ -114,13 +114,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>[1] 2</code></pre>
 </div>
 </div>
+<p>Tools &gt; Global Options &gt; RMarkdown &gt; Show output inline –&gt; will enable/disable printing results of R code directly beneath the chunk vs.&nbsp;in console</p>
 <p>You can add options to executable code like this</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 4</code></pre>
 </div>
 </div>
-<p>The <code>echo: false</code> option disables the printing of code (only output is displayed).</p>
+<p>The <code>echo: false</code> option disables the printing of code (only output is displayed) when document is rendered.</p>
+<p>In RMarkdown, you would have written this {r, echo = FALSE}. You can still do that with Quarto, but it’s generally easier to read, particularly for long options (like caption titles) to specify chunk options on new line.</p>
+</section>
+<section id="chunk-options" class="level2">
+<h2 class="anchored" data-anchor-id="chunk-options">Chunk Options</h2>
+<ul>
+<li>‘#| eval: false’ : Don’t evaluate this chunk! Really helpful if you’re trying to isolate an error, or have a chunk that takes a long time</li>
+<li>#| error: true: Render this even if the chunk causes an error</li>
+<li>#| cache: true: Store the results of this chunk so that it doesn’t need to re-run every time, as long as there are no changes</li>
+<li>#| warning: false: Don’t print warnings</li>
+<li>#| message: false: Don’t print messages</li>
+</ul>
 </section>
 
 </main>

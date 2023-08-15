@@ -16,11 +16,49 @@ When you click the **Render** button a document will be generated that includes 
 1 + 1
 ```
 
-You can add options to executable code like this 
+Tools \> Global Options \> RMarkdown \> Show output inline --\> will enable/disable printing results of R code directly beneath the chunk vs. in console
+
+You can add options to executable code like this
 
 ```{r}
 #| echo: false
 2 * 2
 ```
 
-The `echo: false` option disables the printing of code (only output is displayed).
+The `echo: false` option disables the printing of code (only output is displayed) when document is rendered.
+
+In RMarkdown, you would have written this {r, echo = FALSE}. You can still do that with Quarto, but it's generally easier to read, particularly for long options (like caption titles) to specify chunk options on new line.
+
+## Chunk Options
+
+-   **#\| eval: false**: Don't evaluate this chunk! Really helpful if you're trying to isolate an error, or have a chunk that takes a long time
+-   **#\| error: true**: Render this even if the chunk causes an error
+-   **#\| cache: true**: Store the results of this chunk so that it doesn't need to re-run every time, as long as there are no changes
+-   **#\| warning: false**: Don't print warnings
+-   **#\| message: false**: Don't print messages
+
+## Debugging Tips for Students! \[REVISIT RECORDING\]
+
+If Quarto file is not rendering correctly, check the current working directory to make sure it is attempting to render within the correct Rproject directory/folder.
+
+```{r}
+here::here()
+```
+
+If render fails, check error message to identify WHERE it is located (unamed-chunk-X) or (Lines 25-30)
+
+Use the eval: false option to help you find an error by isolating the code chunks that do/don't work.
+
+Use the error: true option to render the document despite any errors in the code chunk (could also set this as a document option) and you will see which chunks did/did not render successfully in your document.
+
+## Real Life Use Cases of Quarto \[REVISIT RECORDING\]
+
+-   Admittedly, it is not always convenient to send an html document to a collaborator because they cannot make comments/edits. Instead, render your work in R to a Word Doc to share with a professor who doesn't know how to use Quarto so they can make comments. One downside is that you then need to go back to R and make those changes manually (can't "Accept All" from a track changes point of view)
+
+-   Cross-referencing Tables & Figures in document text.
+
+-   Inline Stats -- create a list of stats that you know you will report in the manuscript, you can then write inline R code to reference these results. If data changes, any down stream changes in your results will automatically update. \[\*\*great way to make sure your text results always match table results!\] 
+
+- **Can also do this using gtsummary!** Use inline_text() function to reference specific numbers in a table that was created with gtsummary by variable/column. inline_text() belongs to gtsummary, so cannot use to reference other objects in R (for example, a number stored in a list). Also, inline_text() function syntax is longer and can be harder to read when writing a manuscript. Recommend storing referenced stats in a chunk with include: false option before the text. 
+
+
